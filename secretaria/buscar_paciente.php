@@ -1,8 +1,8 @@
 <?php
+include '../conexion.php';
 header('Content-Type: application/json');
 
-// Conexión a la base de datos
-$conexion = mysqli_connect("localhost", "root", "", "bd");
+
 
 // Capturar el término de búsqueda del parámetro 'q' en la URL
 $term = mysqli_real_escape_string($conexion, $_GET['q']);
