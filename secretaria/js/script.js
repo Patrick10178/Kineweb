@@ -198,6 +198,18 @@ document.getElementById('fecha').addEventListener('change', function() {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    var inputFecha = document.getElementById('fecha');
+
+    inputFecha.addEventListener('input', function() {
+        var fechaSeleccionada = new Date(this.value + 'T00:00:00'); // Asegura que la fecha se interpreta en el huso horario local
+        var dia = fechaSeleccionada.getDay();
+        if (dia === 0 || dia === 6) { // 0 = Domingo, 6 = Sábado
+            this.value = '';
+            alert('Los sábados y domingos no están disponibles. Por favor, elija otro día.');
+        }
+    });
+});
 
 document.getElementById('horario').addEventListener('change', function() {
     var fechaSeleccionada = document.getElementById('fecha').value;

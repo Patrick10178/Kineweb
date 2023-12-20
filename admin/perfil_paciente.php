@@ -133,7 +133,7 @@ $kine=$id;
                             <!-- Los kinesiólogos se agregarán dinámicamente usando JavaScript -->
                         </select>
                          <input type="text" placeholder="Motivo terapia" id="terapia" name="terapia" required>
-                        <button>guardar</button>
+                        <button>Guardar</button>
                         <button type="button" id="closeBtn1">Cerrar</button>
                     </form>
                         
