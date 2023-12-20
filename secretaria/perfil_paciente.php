@@ -132,7 +132,7 @@ $id= $_GET["id"];
                             <!-- Los kinesiólogos se agregarán dinámicamente usando JavaScript -->
                         </select>
                          <input type="text" placeholder="Motivo terapia" id="terapia" name="terapia" required>
-                        <button>Guardarr</button>
+                        <button>guardar</button>
                         <button type="button" id="closeBtn">Cerrar</button>
                     </form>
                         
