@@ -237,7 +237,7 @@ include '../conexion.php';
                     <td>Acciones</td>
                 </tr>
                 <?php
-                $sql="SELECT * FROM Usuarios  WHERE id_cargo= 2 ";
+                $sql="SELECT * FROM usuarios  WHERE id_cargo= 2 ";
                 $result=mysqli_query($conexion,$sql);
 
                 while($mostrar=mysqli_fetch_array($result)){
