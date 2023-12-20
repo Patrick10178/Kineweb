@@ -580,13 +580,11 @@ vertical-align: middle;
     }  
     
   #derecha {
-    padding-top:30px ;
     padding-left: 60px;
     float:left;
   }
 
   #derecha  button{
-    margin-top: 90px;
     margin-left: 80px;
     padding: 10px 40px;
 
@@ -871,5 +869,43 @@ display: inline-block; /* Cambia a inline-block para que los botones estén en l
     outline: none;
 }
 
+.packbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+
+.perfil {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff; /* Fondo blanco para la integración completa */
+  }
+  
+  .perfil td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+  
+  .perfil tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .perfil td:first-child {
+    color: #333; /* Color más fuerte para las etiquetas para un buen contraste */
+    font-weight: bold; /* Negrita para las etiquetas */
+  }
+  .chart-container {
+    display: flex;
+    justify-content: space-around; /* Esto espaciará los gráficos uniformemente */
+  }
+  
+  .canvas-container {
+    width: 45%; /* O lo que desees que sea el ancho de cada gráfico */
+  }
+  
 
 

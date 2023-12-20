@@ -13,6 +13,25 @@ include '../conexion.php';
     <link rel="stylesheet" href="css/estilos.css">
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <style>
+    #boton {
+    display: inline-block;
+    width: calc(100% - 4px);
+    padding: 6px 6px;
+    border: 2px solid #fff;
+    font-size: 14px;
+    font-weight: 600;
+    background: #006e8c;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+}
+    </style>
+
 </head>
 <body id="body">
     
@@ -38,7 +57,8 @@ include '../conexion.php';
             <br>
             Kinesiologa
             <br>
-            <a href="../cerrar_sesion.php">cerrar sesion</a>
+            <a href="../cerrar_sesion.php" style="color: #006e8c;">Cerrar Sesión</a>
+
             </h4>  
             
         </div>

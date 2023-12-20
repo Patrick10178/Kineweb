@@ -907,3 +907,27 @@ background: #edf0f4;
     box-sizing: border-box; /* Incluye padding y borde en el ancho y alto total del elemento */
     margin: 0; /* Asegúrate de resetear los márgenes a 0 */
     }
+
+    .perfil {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff; /* Fondo blanco para la integración completa */
+    }
+    
+    .perfil td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #eaeaea;
+  }
+    
+    .perfil tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .perfil td:first-child {
+      color: #333; /* Color más fuerte para las etiquetas para un buen contraste */
+      font-weight: bold; /* Negrita para las etiquetas */
+    }
+  

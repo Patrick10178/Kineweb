@@ -13,6 +13,25 @@ include '../conexion.php';
     <link rel="stylesheet" href="css/estilos.css">
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <style>
+    #boton {
+    display: inline-block;
+    width: calc(100% - 4px);
+    padding: 6px 6px;
+    border: 2px solid #fff;
+    font-size: 14px;
+    font-weight: 600;
+    background: #006e8c;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+}
+    </style>
+
 </head>
 <body id="body">
     
@@ -38,7 +57,8 @@ include '../conexion.php';
             <br>
             Kinesiologa
             <br>
-            <a href="../cerrar_sesion.php">cerrar sesion</a>
+            <a href="../cerrar_sesion.php" style="color: #006e8c;">Cerrar Sesión</a>
+
             </h4>  
             
         </div>
@@ -281,20 +301,48 @@ include '../conexion.php';
                 ?>
             </table>
              <br>
-            <h2>Estadisticas</h2>
+             <br>
+                    <h2>Estadisticas</h2>
                     <hr>
-
-                    
-                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-                        <h2>Por Rango Etario</h2>
-                        <canvas id="graficoEdades"></canvas>
+                    <br>
+                    <br>
+                    <div class="chart-container">
+                        <div class="canvas-container">
+                            <h2>Por Rango Etario</h2>
+                            <canvas id="graficoEdades"></canvas>
+                        </div>
+                        <div class="canvas-container">
+                            <h2>Por Género</h2>
+                            <canvas id="graficoGeneros"></canvas>
+                        </div>
                     </div>
                     <br>
                     <br>
-
-                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-                        <h2>Por Género</h2>
-                        <canvas id="graficoGeneros"></canvas>
+                    <br>
+                    <br>
+                    <div class="chart-container">
+                        <div class="canvas-container">
+                            <h2>Distribución de Citas por Estado</h2>
+                            <canvas id="graficoEstados"></canvas>
+                        </div>
+                        <div class="canvas-container">
+                            <h2>Frecuencia de Terapias</h2>
+                            <canvas id="graficoTerapias"></canvas>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="chart-container">
+                        <div class="canvas-container">
+                            <h2>Utilización de Horarios</h2>
+                            <canvas id="graficoHorarios"></canvas>
+                        </div>
+                        <div class="canvas-container">
+                            <h2>Edades de los Pacientes en Terapias Específicas</h2>
+                            <canvas id="graficoEdadesTerapias"></canvas>
+                        </div>
                     </div>
 
                     <?php
@@ -321,7 +369,97 @@ include '../conexion.php';
                         $jsonData = json_encode($data);
                     ?>
                     <?php
+                     // Por Distribución de Citas por Estado
+                     $sqlEstados = "SELECT e.descripcion AS estado, COUNT(*) AS cantidad FROM citas c JOIN estado e ON c.estado_id = e.id_estado GROUP BY c.estado_id";
+                     $resultadoEstados = mysqli_query($conexion, $sqlEstados);
+                     $estadisticasEstados = [];
+                     $estadosLabels = [];
+                     $estadosData = [];
+                     
+                     while ($fila = mysqli_fetch_assoc($resultadoEstados)) {
+                         $estadosLabels[] = $fila['estado'];
+                         $estadosData[] = $fila['cantidad'];
+                     }
+                     
+                     $estadosLabels = json_encode($estadosLabels);
+                     $estadosData = json_encode($estadosData);
 
+                     ?>
+                     <?php
+                     // Por Frecuencia de Terapias
+                    $sqlTerapias = "SELECT terapia, COUNT(*) AS cantidad FROM citas GROUP BY terapia";
+                    $resultadoTerapias = mysqli_query($conexion, $sqlTerapias);
+                    $estadisticasTerapias = [];
+                    $terapiasLabels = [];
+                    $terapiasData = [];
+
+                    while ($fila = mysqli_fetch_assoc($resultadoTerapias)) {
+                        $terapiasLabels[] = $fila['terapia'];
+                        $terapiasData[] = $fila['cantidad'];
+                    }
+
+                    $terapiasLabels = json_encode($terapiasLabels);
+                    $terapiasData = json_encode($terapiasData);
+
+                     ?>
+                    <?php
+                    // Por Utilización de Horarios
+                    $sqlHorarios = "SELECT h.nombre_horario, COUNT(*) AS cantidad FROM citas c JOIN horario h ON c.horario_id = h.id_horario GROUP BY c.horario_id";
+                    $resultadoHorarios = mysqli_query($conexion, $sqlHorarios);
+                    $estadisticasHorarios = [];
+                    $horariosLabels = [];
+                    $horariosData = [];
+
+                    while ($fila = mysqli_fetch_assoc($resultadoHorarios)) {
+                        $horariosLabels[] = $fila['nombre_horario'];
+                        $horariosData[] = $fila['cantidad'];
+                    }
+
+                    $horariosLabels = json_encode($horariosLabels);
+                    $horariosData = json_encode($horariosData);
+
+                     ?>
+                     <?php
+                     // Por Edades de los Pacientes en Terapias Específicas
+                     $sqlEdadesTerapias = "
+                        SELECT 
+                            c.terapia,
+                            CASE 
+                                WHEN TIMESTAMPDIFF(YEAR, u.nace, CURDATE()) <= 18 THEN '0-18'
+                                WHEN TIMESTAMPDIFF(YEAR, u.nace, CURDATE()) <= 35 THEN '19-35'
+                                WHEN TIMESTAMPDIFF(YEAR, u.nace, CURDATE()) <= 55 THEN '36-55'
+                                ELSE '56+' 
+                            END AS rango_etario,
+                            COUNT(*) AS cantidad
+                        FROM citas c
+                        JOIN usuarios u ON c.paciente_id = u.id
+                        GROUP BY c.terapia, rango_etario
+                    ";
+                    $resultadoEdadesTerapias = mysqli_query($conexion, $sqlEdadesTerapias);
+                    $datosEdadesTerapias = [];
+
+                    while ($fila = mysqli_fetch_assoc($resultadoEdadesTerapias)) {
+                        $datosEdadesTerapias[$fila['terapia']][$fila['rango_etario']] = $fila['cantidad'];
+                    }
+
+                    // Preparar datos para Chart.js
+                    $labelsTerapias = array_keys($datosEdadesTerapias);
+                    $datosParaGrafico = [];
+                    $rangosEtarios = ['0-18', '19-35', '36-55', '56+'];
+
+                    foreach ($rangosEtarios as $rango) {
+                        $dataRango = [];
+                        foreach ($labelsTerapias as $terapia) {
+                            $dataRango[] = $datosEdadesTerapias[$terapia][$rango] ?? 0;
+                        }
+                        $datosParaGrafico[$rango] = $dataRango;
+                    }
+
+                    $labelsTerapias = json_encode($labelsTerapias);
+                    $datosParaGrafico = json_encode($datosParaGrafico);
+
+                     ?>
+                    <?php
                     // Por rango etario
                     $sqlEdad = "
                         SELECT 
@@ -436,6 +574,116 @@ include '../conexion.php';
                                             backgroundColor: 'rgba(54, 162, 235, 0.5)',
                                             borderColor: 'rgba(54, 162, 235, 1)',
                                             borderWidth: 1
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+
+                            // Datos Distribución de Citas por Estado
+                            const estadosLabels = <?php echo $estadosLabels; ?>;
+                            const estadosData = <?php echo $estadosData; ?>;
+
+                            const graficoEstados = new Chart(document.getElementById('graficoEstados'), {
+                                type: 'bar', // o 'bar' para un gráfico de barras "pie"
+                                data: {
+                                    labels: estadosLabels,
+                                    datasets: [{
+                                        label: 'Cantidad de Citas',
+                                        data: estadosData,
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.5)',
+                                            'rgba(54, 162, 235, 0.5)',
+                                            'rgba(255, 206, 86, 0.5)',
+                                            'rgba(75, 192, 192, 0.5)',
+                                            'rgba(153, 102, 255, 0.5)'
+                                        ]
+                                    }]
+                                }
+                            });
+
+                            // Frecuencia de Terapias
+                            const terapiasLabels = <?php echo $terapiasLabels; ?>;
+                            const terapiasData = <?php echo $terapiasData; ?>;
+
+                            const graficoTerapias = new Chart(document.getElementById('graficoTerapias'), {
+                                type: 'bar',
+                                data: {
+                                    labels: terapiasLabels,
+                                    datasets: [{
+                                        label: 'Cantidad de Citas por Terapia',
+                                        data: terapiasData,
+                                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                            // Utilización de Horarios
+                            const horariosLabels = <?php echo $horariosLabels; ?>;
+                                const horariosData = <?php echo $horariosData; ?>;
+
+                                const graficoHorarios = new Chart(document.getElementById('graficoHorarios'), {
+                                    type: 'bar',
+                                    data: {
+                                        labels: horariosLabels,
+                                        datasets: [{
+                                            label: 'Cantidad de Citas por Horario',
+                                            data: horariosData,
+                                            backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                                            borderColor: 'rgba(153, 102, 255, 1)',
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                             // Edades de los Pacientes en Terapias Específicas
+                            const labelsTerapias = <?php echo $labelsTerapias; ?>;
+                            const datosParaGrafico = <?php echo $datosParaGrafico; ?>;
+
+                            const graficoEdadesTerapias = new Chart(document.getElementById('graficoEdadesTerapias'), {
+                                type: 'bar',
+                                data: {
+                                    labels: labelsTerapias,
+                                    datasets: [
+                                        {
+                                            label: '0-18',
+                                            data: datosParaGrafico['0-18'],
+                                            backgroundColor: 'rgba(255, 99, 132, 0.5)'
+                                        },
+                                        {
+                                            label: '19-35',
+                                            data: datosParaGrafico['19-35'],
+                                            backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                                        },
+                                        {
+                                            label: '36-55',
+                                            data: datosParaGrafico['36-55'],
+                                            backgroundColor: 'rgba(255, 206, 86, 0.5)'
+                                        },
+                                        {
+                                            label: '56+',
+                                            data: datosParaGrafico['56+'],
+                                            backgroundColor: 'rgba(75, 192, 192, 0.5)'
                                         }
                                     ]
                                 },

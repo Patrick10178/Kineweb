@@ -42,7 +42,8 @@ include '../conexion.php';
             <br>
             Administrador
             <br>
-            <a href="../cerrar_sesion.php">cerrar sesion</a>
+            <a href="../cerrar_sesion.php" style="color: #006e8c;">Cerrar Sesión</a>
+
             </h4>  
             
         </div>

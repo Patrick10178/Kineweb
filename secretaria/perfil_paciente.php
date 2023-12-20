@@ -40,7 +40,8 @@ $id= $_GET["id"];
             <br>
             Secretaria
             <br>
-            <a href="../cerrar_sesion.php">cerrar sesion</a>
+            <a href="../cerrar_sesion.php" style="color: #006e8c;">Cerrar Sesión</a>
+
             </h4>  
             
         </div>
@@ -205,11 +206,7 @@ $id= $_GET["id"];
                     <div id=izquierda>
                         <img src="../imagenes/<?php echo $mostrar['img']; ?>" alt="" width="300px" height="300px">
                         <br>
-                        <div class="caja__trasera">
-                                <div class="caja__trasera-register1">
-                                    <button id="btn__registrarse1">Modificar Datos</button>
-                                </div>
-                         </div>
+
                     </div>
                     
 
@@ -282,21 +279,27 @@ $id= $_GET["id"];
                             </td>
                                
                         </table>
-                        <div class="caja__trasera">
-                                <div class="caja__trasera-register">
-                                    <button id="btn__registrarse">Agendar nueva cita</button>
-                                </div>
-                         </div>
+
 
                         
                     </div>
                     <?php 
                     }   
-                ?>
-                
-                </div>
+                ?>      
             </div>
-
+            <div class=packbtn>
+                            <div class="caja__trasera">
+                                    <div class="caja__trasera-register1">
+                                        <button id="btn__registrarse1">Modificar Datos</button>
+                                    </div>
+                            </div>
+                            <div class="caja__trasera">
+                                    <div class="caja__trasera-register">
+                                        <button id="btn__registrarse">Agendar nueva cita</button>
+                                    </div>
+                            </div>
+                         </div>
+                </div>
             <br>  
             <h2>Citas</h2>
             <hr>

@@ -13,6 +13,26 @@ include '../conexion.php';
     <link rel="stylesheet" href="css/estilos.css">
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+<style>
+    #boton {
+    display: inline-block;
+    width: calc(100% - 4px);
+    padding: 6px 6px;
+    border: 2px solid #fff;
+    font-size: 14px;
+    font-weight: 600;
+    background: #006e8c;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+}
+    </style>
+
 </head>
 <body id="body">
     
@@ -40,8 +60,9 @@ include '../conexion.php';
             <br>
             Secretaria
             <br>
-            <!-- boton que redirecciona a la funcion de cerrar sesion-->
-            <a href="../cerrar_sesion.php">cerrar sesion</a>
+            <!-- boton que redirecciona a la funcion de Cerrar Sesión-->
+            <a href="../cerrar_sesion.php" style="color: #006e8c;">Cerrar Sesión</a>
+
             </h4>  
             
         </div>
@@ -405,58 +426,48 @@ include '../conexion.php';
                 }
                 ?>
             </table>
-                    <br>
-                    <h2>Estadisticas</h2>
+            <br>
+            <h2>Estadisticas</h2>
                     <hr>
-
-                    
-                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-                        <h2>Por Rango Etario</h2>
-                        <canvas id="graficoEdades"></canvas>
+                    <br>
+                    <br>
+                    <div class="chart-container">
+                        <div class="canvas-container">
+                            <h2>Por Rango Etario</h2>
+                            <canvas id="graficoEdades"></canvas>
+                        </div>
+                        <div class="canvas-container">
+                            <h2>Por Género</h2>
+                            <canvas id="graficoGeneros"></canvas>
+                        </div>
                     </div>
                     <br>
                     <br>
                     <br>
                     <br>
-
-                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-                        <h2>Por Género</h2>
-                        <canvas id="graficoGeneros"></canvas>
+                    <div class="chart-container">
+                        <div class="canvas-container">
+                            <h2>Distribución de Citas por Estado</h2>
+                            <canvas id="graficoEstados"></canvas>
+                        </div>
+                        <div class="canvas-container">
+                            <h2>Frecuencia de Terapias</h2>
+                            <canvas id="graficoTerapias"></canvas>
+                        </div>
                     </div>
                     <br>
                     <br>
                     <br>
                     <br>
-
-                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-                        <h2>Distribución de Citas por Estado</h2>
-                        <canvas id="graficoEstados"></canvas>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-
-                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-                        <h2>Frecuencia de Terapias</h2>
-                        <canvas id="graficoTerapias"></canvas>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-
-                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-                        <h2>Utilización de Horarios</h2>
-                        <canvas id="graficoHorarios"></canvas>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-                        <h2>Edades de los Pacientes en Terapias Específicas</h2>
-                        <canvas id="graficoEdadesTerapias"></canvas>
+                    <div class="chart-container">
+                        <div class="canvas-container">
+                            <h2>Utilización de Horarios</h2>
+                            <canvas id="graficoHorarios"></canvas>
+                        </div>
+                        <div class="canvas-container">
+                            <h2>Edades de los Pacientes en Terapias Específicas</h2>
+                            <canvas id="graficoEdadesTerapias"></canvas>
+                        </div>
                     </div>
 
                     <?php

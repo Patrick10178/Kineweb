@@ -41,7 +41,8 @@ $kine=$id;
             <br>
             Administrador
             <br>
-            <a href="../cerrar_sesion.php">cerrar sesion</a>
+            <a href="../cerrar_sesion.php" style="color: #006e8c;">Cerrar Sesión</a>
+
             </h4>  
             
         </div>
@@ -207,11 +208,7 @@ $kine=$id;
                     <div id=izquierda>
                         <img src="../imagenes/<?php echo $mostrar['img']; ?>" alt="" width="300px" height="300px">
                         <br>
-                        <div class="caja__trasera">
-                                <div class="caja__trasera-register">
-                                    <button id="btn__registrarse">Modificar Datos</button>
-                                </div>
-                         </div>
+
                     </div>
                     
 
@@ -285,21 +282,29 @@ $kine=$id;
                                
                         </table>
                         
-                        <?php if ($cargo == 3) { ?>
-                            <!-- Botón Agendar nueva cita -->
-                            <div class="caja__trasera">
-                                <div class="caja__trasera-register1">
-                                    <button id="btn__registrarse1">Agendar nueva cita</button>
-                                </div>
-                            </div>
-                        <?php } ?>
+
 
                         
                     </div>
                     <?php 
                     }   
                 ?>
-                
+
+                </div>
+                <br>
+                <div class=packbtn>
+                            <div class="caja__trasera">
+                                    <div class="caja__trasera-register">
+                                        <button id="btn__registrarse">Modificar Datos</button>
+                                    </div>
+                            </div>
+                            <?php if ($cargo == 3) { ?>
+                            <div class="caja__trasera">
+                                <div class="caja__trasera-register1">
+                                    <button id="btn__registrarse1">Agendar nueva cita</button>
+                                </div>
+                            </div>
+                        <?php } ?>
                 </div>
             </div>
             <?php if ($cargo == 3) { ?>
