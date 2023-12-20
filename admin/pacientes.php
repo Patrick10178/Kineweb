@@ -49,7 +49,7 @@ include '../conexion.php';
             <h4>
             <?php
                 $usuario = $_SESSION["usuario"];
-                 $sql="SELECT * FROM Usuarios WHERE id='$usuario' ";
+                 $sql="SELECT * FROM usuarios WHERE id='$usuario' ";
                  $result=mysqli_query($conexion,$sql);
                  while($mostrar=mysqli_fetch_array($result)){
                  echo $mostrar ['nombre'];
@@ -221,7 +221,7 @@ include '../conexion.php';
                 </tr>
                 <?php
                 /* hace la consulta a la base de datos de todos los Usuarios con el cargo de pacientes y los muestra en la tabla con un while */
-                $sql="SELECT * FROM Usuarios WHERE id_cargo = 3";
+                $sql="SELECT * FROM usuarios WHERE id_cargo = 3";
                 $result=mysqli_query($conexion,$sql);
 
                 function calcularRUT($id) {
@@ -290,7 +290,7 @@ include '../conexion.php';
                 </tr>
                 <?php
                 /* hace la consulta a la base de datos de todos los Usuarios con el cargo de pacientes y los muestra en la tabla con un while */
-                $sql="SELECT * FROM Usuarios WHERE id_cargo <> 3 and id_cargo <> 4 ";
+                $sql="SELECT * FROM usuarios WHERE id_cargo <> 3 and id_cargo <> 4 ";
                 $result=mysqli_query($conexion,$sql);
                 while($mostrar=mysqli_fetch_array($result)){
 

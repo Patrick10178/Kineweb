@@ -27,7 +27,7 @@ include '../conexion.php';
                 /*Toma los datos de sesion (el rut, el cual es el ID) del valida_login.php y lo guarda en la variable $usuario 
                 para luego hacer la consulta del nombre y apellidos correspondientes*/
                 $usuario = $_SESSION["usuario"];
-                 $sql="SELECT * FROM Usuarios WHERE id='$usuario' ";
+                 $sql="SELECT * FROM usuarios WHERE id='$usuario' ";
                  $result=mysqli_query($conexion,$sql);
                  while($mostrar=mysqli_fetch_array($result)){
                  echo $mostrar ['nombre'];
@@ -104,7 +104,7 @@ include '../conexion.php';
                     <hr>
                     <br>
                     <?php
-                        $sql2="SELECT * FROM Usuarios  WHERE id='$usuario' ";
+                        $sql2="SELECT * FROM usuarios  WHERE id='$usuario' ";
                           
                         $result=mysqli_query($conexion,$sql2);
                         while($mostrar=mysqli_fetch_array($result)){
@@ -332,7 +332,7 @@ include '../conexion.php';
                             END AS rango_etario,
                             COUNT(*) AS cantidad
                         FROM citas c
-                        JOIN Usuarios u ON c.paciente_id = u.id
+                        JOIN usuarios u ON c.paciente_id = u.id
                         GROUP BY c.terapia, rango_etario
                     ";
                     $resultadoEdadesTerapias = mysqli_query($conexion, $sqlEdadesTerapias);
@@ -365,8 +365,8 @@ include '../conexion.php';
                         SELECT 
                             terapia, 
                             TIMESTAMPDIFF(YEAR, nace, CURDATE()) AS edad 
-                        FROM Usuarios
-                        INNER JOIN citas ON Usuarios.id = citas.paciente_id;
+                        FROM usuarios
+                        INNER JOIN citas ON usuarios.id = citas.paciente_id;
                     ";
                     $resultadoEdad = mysqli_query($conexion, $sqlEdad);
                     $estadisticasEdad = [
@@ -394,8 +394,8 @@ include '../conexion.php';
                             terapia, 
                             sex, 
                             COUNT(*) as cantidad 
-                        FROM Usuarios
-                        INNER JOIN citas ON Usuarios.id = citas.paciente_id
+                        FROM usuarios
+                        INNER JOIN citas ON usuarios.id = citas.paciente_id
                         GROUP BY terapia, sex;
                     ";
                     $resultadoGenero = mysqli_query($conexion, $sqlGenero);

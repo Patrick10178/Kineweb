@@ -267,9 +267,9 @@ include '../conexion.php';
                     FROM 
                         citas c 
                     JOIN 
-                        Usuarios p ON c.paciente_id = p.id 
+                        usuarios p ON c.paciente_id = p.id 
                     JOIN 
-                        Usuarios k ON c.kine_id = k.id 
+                        usuarios k ON c.kine_id = k.id 
                     JOIN 
                         horario h ON c.horario_id = h.id_horario 
                     JOIN 
@@ -329,7 +329,7 @@ include '../conexion.php';
                     <td>Acciones</td>
                 </tr>
                 <?php
-                $sql="SELECT * FROM Usuarios  WHERE id_cargo= 2 ";
+                $sql="SELECT * FROM usuarios  WHERE id_cargo= 2 ";
                 $result=mysqli_query($conexion,$sql);
 
                 while($mostrar=mysqli_fetch_array($result)){
@@ -359,9 +359,9 @@ include '../conexion.php';
                     FROM 
                         citas c 
                     JOIN 
-                        Usuarios p ON c.paciente_id = p.id 
+                        usuarios p ON c.paciente_id = p.id 
                     JOIN 
-                        Usuarios k ON c.kine_id = k.id 
+                        usuarios k ON c.kine_id = k.id 
                     JOIN 
                         horario h ON c.horario_id = h.id_horario 
                     JOIN 

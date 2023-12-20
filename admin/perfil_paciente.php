@@ -28,7 +28,7 @@ $kine=$id;
             <h4>
             <?php
                 $usuario = $_SESSION["usuario"];
-                 $sql="SELECT * FROM Usuarios WHERE id='$usuario' ";
+                 $sql="SELECT * FROM usuarios WHERE id='$usuario' ";
                  $result=mysqli_query($conexion,$sql);
                  while($mostrar=mysqli_fetch_array($result)){
                  echo $mostrar ['nombre'];
@@ -169,7 +169,7 @@ $kine=$id;
                     return $rutFormateado;
                 }
             
-                $sql2="SELECT * FROM Usuarios  WHERE id='$id' ";
+                $sql2="SELECT * FROM usuarios  WHERE id='$id' ";
                   
                 $result=mysqli_query($conexion,$sql2);
                 while($mostrar=mysqli_fetch_array($result)){
@@ -258,7 +258,7 @@ $kine=$id;
                                 <td>Proxima Cita:</td>
                                 <td>
                                 <?php 
-                                $sq2="SELECT * FROM Usuarios u JOIN citas c ON c.paciente_id = u.id JOIN horario h on c.horario_id = h.id_horario WHERE id= '$id' and id_cargo= 3 and estado_id=1 ORDER BY c.fecha ASC, h.nombre_horario ASC LIMIT 1";
+                                $sq2="SELECT * FROM usuarios u JOIN citas c ON c.paciente_id = u.id JOIN horario h on c.horario_id = h.id_horario WHERE id= '$id' and id_cargo= 3 and estado_id=1 ORDER BY c.fecha ASC, h.nombre_horario ASC LIMIT 1";
                                 $result2=mysqli_query($conexion,$sq2);
                                 if (mysqli_num_rows($result2)>0){
                                     while($mostrar=mysqli_fetch_array($result2)){
@@ -323,8 +323,8 @@ $kine=$id;
                 k.id as kine_id, k.nombre as nombre_kine, k.apellidoP as apellidoP_kine, k.apellidoM as apellidoM_kine, 
                 c.fecha, c.terapia, h.nombre_horario, h.id_horario, e.descripcion 
                 FROM citas c 
-                JOIN Usuarios p ON c.paciente_id = p.id 
-                JOIN Usuarios k ON c.kine_id = k.id 
+                JOIN usuarios p ON c.paciente_id = p.id 
+                JOIN usuarios k ON c.kine_id = k.id 
                 JOIN horario h ON c.horario_id = h.id_horario 
                 JOIN estado e ON c.estado_id = e.id_estado 
                 WHERE p.id_cargo = 3 and p.id=$id;";
@@ -364,7 +364,7 @@ $kine=$id;
 
                 </tr>
                 <?php
-                $sql="SELECT * FROM videos v JOIN Usuarios u ON v.id_paciente = u.id JOIN estado e on v.estado=e.id_estado WHERE id = '$id'";
+                $sql="SELECT * FROM videos v JOIN usuarios u ON v.id_paciente = u.id JOIN estado e on v.estado=e.id_estado WHERE id = '$id'";
                 $result=mysqli_query($conexion,$sql);
 
                 while($mostrar=mysqli_fetch_array($result)){
@@ -398,7 +398,7 @@ $kine=$id;
                     <td>Acciones</td>
                 </tr>
                 <?php
-                $sql="SELECT * FROM Usuarios  WHERE id_cargo= 3 ";
+                $sql="SELECT * FROM usuarios  WHERE id_cargo= 3 ";
                 $result=mysqli_query($conexion,$sql);
 
                 while($mostrar=mysqli_fetch_array($result)){
@@ -408,7 +408,7 @@ $kine=$id;
                     <?php $id = $mostrar ['id'];?>
 
                         <?php 
-                        $sq2="SELECT * FROM Usuarios u JOIN citas c ON c.paciente_id = u.id JOIN horario h on c.horario_id = h.id_horario WHERE id= '$id' and id_cargo= 3 and estado_id=1 and kine_id='$kine' ORDER BY c.fecha, c.horario_id";
+                        $sq2="SELECT * FROM usuarios u JOIN citas c ON c.paciente_id = u.id JOIN horario h on c.horario_id = h.id_horario WHERE id= '$id' and id_cargo= 3 and estado_id=1 and kine_id='$kine' ORDER BY c.fecha, c.horario_id";
                         $result2=mysqli_query($conexion,$sq2);
                         if (mysqli_num_rows($result2) > 0) {
                             // Recorrer cada fila del resultado
@@ -456,7 +456,7 @@ $kine=$id;
                     <td>Acciones</td>
                 </tr>
                 <?php
-                $sql="SELECT * FROM Usuarios  WHERE id_cargo= 3 ";
+                $sql="SELECT * FROM usuarios  WHERE id_cargo= 3 ";
                 $result=mysqli_query($conexion,$sql);
 
                 while($mostrar=mysqli_fetch_array($result)){
@@ -466,7 +466,7 @@ $kine=$id;
                     <?php $id = $mostrar ['id'];?>
 
                         <?php 
-                        $sq2="SELECT * FROM Usuarios u JOIN citas c ON c.paciente_id = u.id JOIN horario h on c.horario_id = h.id_horario WHERE id= '$id' and id_cargo= 3 and estado_id=4 and kine_id='$kine' ORDER BY c.fecha, c.horario_id";
+                        $sq2="SELECT * FROM usuarios u JOIN citas c ON c.paciente_id = u.id JOIN horario h on c.horario_id = h.id_horario WHERE id= '$id' and id_cargo= 3 and estado_id=4 and kine_id='$kine' ORDER BY c.fecha, c.horario_id";
                         $result2=mysqli_query($conexion,$sq2);
                         
 
@@ -520,7 +520,7 @@ $kine=$id;
                     <td>Acciones</td>
                 </tr>
                 <?php
-                $sql="SELECT * FROM Usuarios  WHERE id_cargo= 2 ";
+                $sql="SELECT * FROM usuarios  WHERE id_cargo= 2 ";
                 $result=mysqli_query($conexion,$sql);
 
                 while($mostrar=mysqli_fetch_array($result)){
@@ -550,9 +550,9 @@ $kine=$id;
                     FROM 
                         citas c 
                     JOIN 
-                        Usuarios p ON c.paciente_id = p.id 
+                        usuarios p ON c.paciente_id = p.id 
                     JOIN 
-                        Usuarios k ON c.kine_id = k.id 
+                        usuarios k ON c.kine_id = k.id 
                     JOIN 
                         horario h ON c.horario_id = h.id_horario 
                     JOIN 
@@ -612,7 +612,7 @@ $kine=$id;
                     <td>Acciones</td>
                 </tr>
                 <?php
-                $sql="SELECT * FROM Usuarios  WHERE id_cargo= 2 ";
+                $sql="SELECT * FROM usuarios  WHERE id_cargo= 2 ";
                 $result=mysqli_query($conexion,$sql);
 
                 while($mostrar=mysqli_fetch_array($result)){
@@ -642,9 +642,9 @@ $kine=$id;
                     FROM 
                         citas c 
                     JOIN 
-                        Usuarios p ON c.paciente_id = p.id 
+                        usuarios p ON c.paciente_id = p.id 
                     JOIN 
-                        Usuarios k ON c.kine_id = k.id 
+                        usuarios k ON c.kine_id = k.id 
                     JOIN 
                         horario h ON c.horario_id = h.id_horario 
                     JOIN 

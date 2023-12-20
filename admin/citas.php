@@ -42,7 +42,7 @@ include '../conexion.php';
             <h4>
             <?php
                 $usuario = $_SESSION["usuario"];
-                 $sql="SELECT * FROM Usuarios WHERE id='$usuario' ";
+                 $sql="SELECT * FROM usuarios WHERE id='$usuario' ";
                  $result=mysqli_query($conexion,$sql);
                  while($mostrar=mysqli_fetch_array($result)){
                  echo $mostrar ['nombre'];
@@ -178,8 +178,8 @@ include '../conexion.php';
                 k.id as kine_id, k.nombre as nombre_kine, k.apellidoP as apellidoP_kine, k.apellidoM as apellidoM_kine, 
                 c.fecha, c.terapia, h.nombre_horario, h.id_horario, e.descripcion 
                 FROM citas c 
-                JOIN Usuarios p ON c.paciente_id = p.id 
-                JOIN Usuarios k ON c.kine_id = k.id 
+                JOIN usuarios p ON c.paciente_id = p.id 
+                JOIN usuarios k ON c.kine_id = k.id 
                 JOIN horario h ON c.horario_id = h.id_horario 
                 JOIN estado e ON c.estado_id = e.id_estado 
                 WHERE p.id_cargo = 3;";

@@ -334,9 +334,9 @@ $id= $_GET["id"];
             FROM 
                 citas c 
             JOIN 
-                Usuarios p ON c.paciente_id = p.id 
+                usuarios p ON c.paciente_id = p.id 
             JOIN 
-                Usuarios k ON c.kine_id = k.id 
+                usuarios k ON c.kine_id = k.id 
             JOIN 
                 horario h ON c.horario_id = h.id_horario 
             JOIN 
