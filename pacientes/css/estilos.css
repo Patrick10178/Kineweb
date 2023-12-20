@@ -852,6 +852,23 @@ background: #edf0f4;
   display: none; /* Establecemos que por defecto esté oculto */
 }
 
+/* Estilo para el indicador de mensajes no leídos */
+.unread-count {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  background-color: #006e8c;
+  color: white;
+  padding: 2px 6px; /* Ajusta el tamaño del indicador según tus preferencias */
+  border-radius: 50%;
+}
+
+/* Estilo específico para el tamaño de la fuente del número */
+.unread-count {
+  font-size: 15px !important; /* !important para aumentar la especificidad */
+}
+
+
 #fecha_na{
   width: 31%;
   border-radius:8px ;
