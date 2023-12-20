@@ -133,7 +133,8 @@ include '../conexion.php';
          usuario no pueda avanzar hasta rellenar todos los campos -->
                     <form action="registro.php" method="POST" enctype="multipart/form-data" class="formulario__register" name="form1">
                         <h2>Datos Usuario</h2>
-                        <input type="text" required placeholder="Ingrese su rut" name="rut" onblur="return Rut(form1.rut.value)" />
+                        <input type="text" placeholder="Su rut sin puntos y sin dígito verificador" name="rut" id="rut" onkeyup="checkRutValidity(this)">
+                        <span id="rut-error" class="input-error-message" style="display: none; color: red;">RUT incorrecto</span>
                         <div class="input_container">
                             <input type="text" placeholder="Nombre" name="nombre" required>
                             <input type="text" placeholder="Apellido Paterno" name="apellidop">
