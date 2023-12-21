@@ -8,7 +8,7 @@ $rut = $_GET['id'];
 
 //sentencia sql para eliminar//
 
-$eliminar = "UPDATE `Usuarios` SET `id_cargo` = '3' WHERE `Usuarios`.`id` =$rut";
+$eliminar = "UPDATE `usuarios` SET `id_cargo` = '3' WHERE `usuarios`.`id` =$rut";
 
 //ejecutar//
 

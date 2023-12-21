@@ -28,7 +28,7 @@ if(isset($_FILES['image'])){
                             $new_img_name = $time.$img_name;
                             //mueve la imagen y la guarda en el directorio
                             if(move_uploaded_file($tmp_name,"../imagenes/".$new_img_name)){
-                                $query = "UPDATE `Usuarios` SET `nombre`= '$nombre' , `apellidoP`= '$apellidop', `apellidoM` = '$apellidom' , `correo` = '$correo', 
+                                $query = "UPDATE `usuarios` SET `nombre`= '$nombre' , `apellidoP`= '$apellidop', `apellidoM` = '$apellidom' , `correo` = '$correo', 
                                 `telefono` = '$telefono' , `nace` = '$nace', `img`= '$new_img_name' WHERE `id` = $rut";
                             //si no existe el paciente, procede a almacenarlo a la base de datos//
 
@@ -56,7 +56,7 @@ if(isset($_FILES['image'])){
                         echo "Please upload an image file - jpeg, png, jpg";
                     }
                 }else{//si no sube imagen, solo actualizar los datos
-                    $query = "UPDATE `Usuarios` SET `nombre`= '$nombre' , `apellidoP`= '$apellidop', `apellidoM` = '$apellidom' , `correo` = '$correo', 
+                    $query = "UPDATE `usuarios` SET `nombre`= '$nombre' , `apellidoP`= '$apellidop', `apellidoM` = '$apellidom' , `correo` = '$correo', 
                                 `telefono` = '$telefono' , `nace` = '$nace' WHERE `id` = $rut";
 
                         $ejecutar = mysqli_query($conexion, $query);

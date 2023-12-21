@@ -105,7 +105,7 @@ $query = "INSERT INTO `citas` (`paciente_id`, `horario_id`, `terapia`, `fecha`, 
 
 
  //verificar que  paciente este registrado//
- $verificar_id = mysqli_query($conexion, "SELECT * FROM Usuarios WHERE id = '$rut' AND id_cargo= 3");
+ $verificar_id = mysqli_query($conexion, "SELECT * FROM usuarios WHERE id = '$rut' AND id_cargo= 3");
  
 
  if (mysqli_num_rows($verificar_id)==0){

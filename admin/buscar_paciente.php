@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 $term = mysqli_real_escape_string($conexion, $_GET['q']);
 
 // Consulta SQL para buscar pacientes
-$sql = "SELECT id, nombre, apellidoP, apellidoM FROM Usuarios WHERE (id LIKE '%$term%' OR nombre LIKE '%$term%' OR apellidoP LIKE '%$term%' OR apellidoM LIKE '%$term%') AND id_cargo = 3 LIMIT 10";
+$sql = "SELECT id, nombre, apellidoP, apellidoM FROM usuarios WHERE (id LIKE '%$term%' OR nombre LIKE '%$term%' OR apellidoP LIKE '%$term%' OR apellidoM LIKE '%$term%') AND id_cargo = 3 LIMIT 10";
 
 $resultado = mysqli_query($conexion, $sql);
 

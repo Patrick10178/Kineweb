@@ -55,7 +55,7 @@ if(isset($_GET['fecha'])) {
         }
     
         // Obtener todos los kinesiólogos
-        $query_todos_kines = "SELECT id, nombre, apellidoP, apellidoM FROM Usuarios WHERE id_cargo = 1";
+        $query_todos_kines = "SELECT id, nombre, apellidoP, apellidoM FROM usuarios WHERE id_cargo = 1";
         $result_todos_kines = mysqli_query($conexion, $query_todos_kines);
         while($row = mysqli_fetch_assoc($result_todos_kines)) {
             $response['todos_los_kinesiologos'][] = [

@@ -10,7 +10,7 @@ $correo = $_POST['correo'];
 $telefono = $_POST['telefono'];
 
 //sentencia sql para actualizar los datos//
-$actualizar = "UPDATE Usuarios SET nombre='$nombre', apellidoP='$apellidop', apellidoM='$apellidom', correo='$correo', telefono='$telefono' WHERE id='$rut'";
+$actualizar = "UPDATE usuarios SET nombre='$nombre', apellidoP='$apellidop', apellidoM='$apellidom', correo='$correo', telefono='$telefono' WHERE id='$rut'";
 
 
 //ejecucion//

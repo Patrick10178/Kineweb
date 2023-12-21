@@ -110,14 +110,14 @@ if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
     }
 }
 // Verificar si el RUT ya está registrado
-$verificar_rut = mysqli_query($conexion, "SELECT * FROM Usuarios WHERE id = '$rut'");
+$verificar_rut = mysqli_query($conexion, "SELECT * FROM usuarios WHERE id = '$rut'");
 
 if (mysqli_num_rows($verificar_rut) > 0) {
 
     $fila = mysqli_fetch_assoc($verificar_rut);
 
     $contrasena = isset($_POST['contrasena']) && !empty($_POST['contrasena']) ? md5($_POST['contrasena']) : null;
-    $sql = "UPDATE `Usuarios` SET `nombre`='$nombre', `apellidoP`='$apellidop', `apellidoM`='$apellidom', `correo`='$correo', `telefono`='$telefono', `nace`='$nace', `sex`='$sexo', `id_cargo`='$tipo_usuario', `admin`='$admin'";    
+    $sql = "UPDATE `usuarios` SET `nombre`='$nombre', `apellidoP`='$apellidop', `apellidoM`='$apellidom', `correo`='$correo', `telefono`='$telefono', `nace`='$nace', `sex`='$sexo', `id_cargo`='$tipo_usuario', `admin`='$admin'";    
     if ($new_img_name) {
         $sql .= ", `img`='$new_img_name'";
     }
@@ -133,7 +133,7 @@ if (mysqli_num_rows($verificar_rut) > 0) {
         exit();
     }
     $contrasena = md5($_POST['contrasena']);
-    $sql = "INSERT INTO `Usuarios` (`id`, `nombre`, `apellidoP`, `apellidoM`, `sex`, `correo`, `telefono`, `contrasena`, `id_cargo`, `nace`, `img`, `admin`)
+    $sql = "INSERT INTO `usuarios` (`id`, `nombre`, `apellidoP`, `apellidoM`, `sex`, `correo`, `telefono`, `contrasena`, `id_cargo`, `nace`, `img`, `admin`)
     VALUES ('$rut', '$nombre', '$apellidop', '$apellidom', '$sexo', '$correo', '$telefono', '$contrasena', '$tipo_usuario', '$nace', ". ($new_img_name ? "'$new_img_name'" : "NULL") .", '$admin')";
     $mensaje = "usuario registrado exitosamente.";
 }

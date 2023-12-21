@@ -31,7 +31,7 @@ $id= $_GET["id"];
             <h4>
             <?php
                 $usuario = $_SESSION["usuario"];
-                 $sql="SELECT * FROM Usuarios WHERE id='$usuario' ";
+                 $sql="SELECT * FROM usuarios WHERE id='$usuario' ";
                  $result=mysqli_query($conexion,$sql);
                  while($mostrar=mysqli_fetch_array($result)){
                  echo $mostrar ['nombre'];
@@ -116,7 +116,7 @@ $id= $_GET["id"];
                 </tr>
                 <?php
                 /*La variable obtenida con el metodo GET,se utilizara para buscarlo en el registro y mostrarlo en la tabla */
-                $sql="SELECT * FROM Usuarios WHERE id = $id";
+                $sql="SELECT * FROM usuarios WHERE id = $id";
                 $result=mysqli_query($conexion,$sql);
                 function calcularRUT($id) {
                     // Eliminar guiones si existen
