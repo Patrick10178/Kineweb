@@ -144,7 +144,7 @@ include '../conexion.php';
                             <input type="email" placeholder="Correo" name="correo" required>
                         </div>
                         <div class="input_container">
-                            <input type="number" placeholder="Telefono" name="telefono" required>
+                            <input type="number" placeholder="Telefóno" name="telefono" required>
                             <input type="password" placeholder="Contraseña" name="contrasena">
                         </div>
                         <div class="input_container">
@@ -217,7 +217,7 @@ include '../conexion.php';
                     <td>Rut</td>
                     <td>Nombre</td>
                     <td>Correo</td>
-                    <td>Telefono</td>
+                    <td>Telefóno</td>
                     <td>Fecha nacimiento</td>
                     <td>Acciones</td>
                 </tr>
@@ -286,7 +286,7 @@ include '../conexion.php';
                     <td>Rut</td>
                     <td>Nombre</td>
                     <td>Correo</td>
-                    <td>Telefono</td>
+                    <td>Telefóno</td>
                     <td>Fecha nacimiento</td>
                     <td>Acciones</td>
                 </tr>

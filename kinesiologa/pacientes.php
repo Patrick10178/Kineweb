@@ -124,7 +124,7 @@ include '../conexion.php';
                     <td>Rut</td>
                     <td>Nombre</td>
                     <td>Correo</td>
-                    <td>Telefono</td>
+                    <td>Telefóno</td>
                     <td>Proxima cita</td>
                     <td>Acciones</td>
                 </tr>

@@ -143,7 +143,7 @@ include '../conexion.php';
                                     <input type="email" placeholder="Correo" name="correo" value="<?php echo $mostrar['correo']?>" required>
                                     </div>
                                     <div class="input_container">
-                                    <input type="number" placeholder="Telefono" name="telefono" value="<?php echo $mostrar['telefono']?>" required>
+                                    <input type="number" placeholder="Telefóno" name="telefono" value="<?php echo $mostrar['telefono']?>" required>
                                     </div>
                                     <div class="input_container">
                                     <input type="text" placeholder="Fecha de nacimiento" onfocus="(this.type='date')" name= "nace" value="<?php echo $mostrar['nace']?>" required> 
@@ -177,7 +177,7 @@ include '../conexion.php';
                                         <td><?php echo $mostrar['apellidoM']?></td>
                                     </tr>
                                     <tr>
-                                        <td>Telefono:</td>
+                                        <td>Telefóno:</td>
                                         <td><?php echo $mostrar['telefono']?></td>
                                     </tr>
         
@@ -222,7 +222,7 @@ include '../conexion.php';
                 <tr>
                     <td>Rut</td>
                     <td>Nombre</td>
-                    <td>Telefono</td>
+                    <td>Telefóno</td>
                     <td>Fecha</td>
                     <td>Hora</td>
                     <td>Acciones</td>

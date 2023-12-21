@@ -196,7 +196,7 @@ $id= $_GET["id"];
                                 <td><?php echo $mostrar['apellidoM']?></td>
                             </tr>
                             <tr>
-                                <td>Telefono:</td>
+                                <td>Telefóno:</td>
                                 <td><?php echo $mostrar['telefono']?></td>
                             </tr>
 

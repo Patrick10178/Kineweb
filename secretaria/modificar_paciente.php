@@ -111,7 +111,7 @@ $id= $_GET["id"];
                     <td>Apellido Paterno</td>
                     <td>Apellido Materno</td>
                     <td>Correo</td>
-                    <td>Telefono</td>
+                    <td>Telefóno</td>
                     <td>Acciones</td>
                 </tr>
                 <?php

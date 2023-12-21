@@ -108,12 +108,12 @@ include '../conexion.php';
                     <td>Rut</td>
                     <td>Nombre</td>
                     <td>Correo</td>
-                    <td>Telefono</td>
+                    <td>Telefóno</td>
                     <td>Acciones</td>
                 </tr>
                 <?php
                 /* hace la consulta a la base de datos de todos los Usuarios con el cargo de pacientes y los muestra en la tabla con un while */
-                $sql="SELECT * FROM Usuarios WHERE id_cargo = 4";
+                $sql="SELECT * FROM usuarios WHERE id_cargo = 4";
                 $result=mysqli_query($conexion,$sql);
 
                 function calcularRUT($id) {
