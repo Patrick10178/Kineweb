@@ -123,7 +123,7 @@ include '../conexion.php';
                 <!-- Boton para registrar nuevo usuario-->
                     <div class="caja__trasera-register">
                         <button id="btn__registrarse">Nuevo usuario</button>
-                        <a href="pacientes_eliminados.php" class="btn__eliminados">Pacientes Eliminados</a>
+                        <a href="pacientes_eliminados.php" class="btn__eliminados">Usuarios Eliminados</a>
                     </div>
                 </div>
 
